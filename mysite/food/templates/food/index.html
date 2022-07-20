@@ -1,0 +1,31 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+
+
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-6 g-3">
+        {% for item in item_list %}
+        <div class="col">
+            <div class="card">
+                <img class="card-img-top" src="{{ item.item_image }}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title"> {{ item.item_name }}</h4>
+                    <p class="card-text">{{ item.item_desc }}</p>
+                    <div class="row">
+                        <div class="col">
+                            <p class="btn btn-danger btn-block float-start price-hp">{{ item.item_price }}&dollar;</p>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'food:detail' item.id %}" class="btn btn-success btn-block float-end">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
